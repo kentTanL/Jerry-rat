@@ -1,4 +1,4 @@
-package org.jettyrat.net.httpserver;
+package org.jettyrat.connector.http;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,25 +6,30 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Locale;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
-public class Response implements ServletResponse {
+import org.jettyrat.net.httpserver.Constants;
+
+
+public class HttpResponse implements HttpServletResponse {
     private static final int BUFFER_SIZE = 1024;
-    private Request request;
+    private HttpRequest request;
     private OutputStream output;
     private PrintWriter writer;
-
-    public Response(OutputStream output) {
+    
+    public HttpResponse(OutputStream output) {
         this.output = output;
     }
-
-    public void setReqeust(Request request) {
+    
+    public void setReqeust(HttpRequest request) {
         this.request = request;
     }
-
+    
     public void sendStaticResource() throws IOException {
         byte[] bytes = new byte[BUFFER_SIZE];
         FileInputStream fis = null;
@@ -54,6 +59,12 @@ public class Response implements ServletResponse {
             }
         }
 
+    }
+    
+    @Override
+    public void setHeader(String string, String string2) {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
@@ -151,5 +162,126 @@ public class Response implements ServletResponse {
         // TODO Auto-generated method stub
         return null;
     }
+
+    @Override
+    public void addCookie(Cookie cookie) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean containsHeader(String name) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public String encodeURL(String url) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String encodeRedirectURL(String url) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String encodeUrl(String url) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String encodeRedirectUrl(String url) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void sendError(int sc, String msg) throws IOException {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sendError(int sc) throws IOException {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void sendRedirect(String location) throws IOException {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setDateHeader(String name, long date) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void addDateHeader(String name, long date) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void addHeader(String name, String value) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setIntHeader(String name, int value) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void addIntHeader(String name, int value) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setStatus(int sc) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void setStatus(int sc, String sm) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public int getStatus() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public String getHeader(String name) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Collection<String> getHeaders(String name) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Collection<String> getHeaderNames() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 
 }

@@ -50,7 +50,7 @@ public class HttpServer {
 
                 // 创建Response对象
                 Response response = new Response(output);
-                response.setRqeust(request);
+                response.setReqeust(request);
                 
                 Processor processor = null;
                 // 检查这个请求是servlet或者静态资源请求
